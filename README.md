@@ -1,6 +1,6 @@
 # Audio Transcription App
 
-This application is a web application created using Flask, designed to convert audio files into text. The function to convert to text utilizes OpenAI's Whisper. Whisper has both a free open-source version and a paid API version, but this tool uses the API version. As of June 1, 2023, the cost is $0.006 per minute of audio data. For more details, please see [here](https://openai.com/pricing).
+This application is a web application created using Flask, designed to convert audio files into text. The function to convert to text utilizes OpenAI's Whisper. Whisper has both a free open-source version and a paid API version. This tool uses the API version. As of June 1, 2023, the cost is $0.006 per minute of audio data. For more details, please see [here](https://openai.com/pricing).
 
 ## Main Features
 
