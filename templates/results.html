@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}YY-T: Result{% endblock %}
+
+{% block content %}
+
+<p class="precaution"><b>{{ _("※一度このページを離れると、結果は再表示されません。再び同じ作業をする手間とコストを省くため、忘れずに保存して下さい。<br>※メモを共有する際は必ず内容を確認して下さい。専門用語の把握やぶら下がり等での不明瞭な音声の認識、質疑応答での質問者・回答者の識別などは、このアプリケーションでは困難です。") }}</b></p>
+
+<p id="results_statement">{{ result | safe }}</p>
+
+<br><br>
+
+<a href="{{ url_for('index') }}">Go back</a>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+{% block script %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endblock %}
+{% block content %}
+
+<div class="container">
+    <details>
+        <summary>{{ _('使い方') }}</summary>
+        <div id="desc-box">
+    <p class="description">
+    <ol>
+        <li>{{ _('音声ファイルの言語を日本語、英語から選択') }}</li>
+        <li>{{ _('音声ファイル(mp3)をアップロード') }}</li>
+        <li>{{ _('「Start」ボタンをクリック') }}</li>
+        <li>{{ _('コンピューターが音声ファイルを読み込み、メモを作成し、表示してくれるまで、寛大な心で待機<br>（３０分の音声データは約３分、３時間のデータは約２０分で処理されます）') }}</li>
+        <li>{{ _('表示された文章を保存') }}</li>
+    </ol>
+    </p>
+</div>
+</details>
+</div>
+
+<div class="container">
+    <details>
+        <summary>{{ _('このアプリについて') }}</summary>
+        <div id="desc-box">
+    <p class="description">
+        {{ _('このツールは、OpenAIが提供する自動音声認識システム「') }}<a href="https://openai.com/research/whisper" target="_blank">{{ _('Whisper') }}</a>{{ _('」を活用しています。アップロードされた音声ファイルや作成されたメモのデータは、作業後に自動的にシステムから消去されます。') }}
+    </p>
+</div>
+</details>
+</div>
+
+    <form id="file_form" action="/loading" method="post" enctype="multipart/form-data">
+        <div class="form-group-radio">
+            <p class="language-choice"><b>{{ _('音声データの言語：') }}</b></p>
+            <label>
+                <input type="radio" name="language" value="Japanese" checked> <b>{{ _('日本語') }}</b>
+            </label>
+            <label>
+                <input type="radio" name="language" value="English"> <b>{{ _('英語') }}</b>
+            </label>
+        </div>
+        <div class="form-group">
+        <div class="upload">
+            <input type="file" name="file_input" id="file_input" accept=".mp3, .MP3">
+        </div>
+        <div class="submission">
+            <input type="submit" value="Start" id="submit_file" disabled>
+        </div>
+        </div>
+    </form>
+    <br><br><br><br><br><br>
+    <a href="{{ url_for('set_language', lang='ja') }}">日本語</a>
+    <a href="{{ url_for('set_language', lang='en') }}">English</a>
+
+    <div id="error-message" style="color: red;"></div>
+
+<script>
+    // Get the elements
+    const fileInput = document.getElementById('file_input');
+    const submitFile = document.getElementById('submit_file');
+
+    // Add event listeners
+    fileInput.addEventListener('change', () => {
+        // Submit button works if valid file is selected
+        if (fileInput.value.trim()) {
+            submitFile.disabled = false;
+        } else {
+            submitFile.disabled = true;
+        }
+    });
+
+    // Show error message if file selection is invalid
+    fileInput.addEventListener('invalid', (e) => {
+        e.preventDefault();
+        document.getElementById('error-message').innerText = fileInput.validationMessage;
+    });
+
+    // Form submission using AJAX
+    $(document).ready(function() { // The code below will be run if the entire webpage has been loaded successfully
+        // Run the following code if file is submitted from the form function which has the id of "file_form"
+        $('#file_form').on('submit', function(e) { 
+            e.preventDefault(); // Prevent default function of form function
+            $.ajax({ // Starts Ajax request
+                url: '/loading', // The url it should submit the request through
+                data: new FormData(this), // Male new object that has "this" submitted data
+                type: 'POST', // type of request
+                contentType: false, // Do not setup content type of request automatically
+                cache: false, // Do not use browser's cache
+                processData:false, // Do not translate the data to query strings
+                success: function(response) {
+                    // handle success,redirect to loading page
+                    window.location.href = "/loading";
+                },
+                error: function(response) {
+                    // handle error
+                    let error = JSON.parse(response.responseText);
+                    $('#error-message').text(error.error);
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,6 @@
+.git
+ipynb_checkpoints
+.DS_Store
+venv
+__pycache__
+config.py

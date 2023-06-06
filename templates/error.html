@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block script %}
+{% endblock %}
+
+{% block content %}
+<img src="../static/error.png" alt="computer gif">
+<p class="loading">{{ _("音声ファイルがアップロードされずにページが切り替わってしまったようです。トップページからやり直してください。") }}</p>
+<a href="{{ url_for('index') }}">Go back</a>
+{% endblock content %}

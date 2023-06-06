@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block title %}Loading...{% endblock %}
+{% block script %}<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+// Check if server is ready to display the result and render /results page every second
+function checkStatus() {
+    fetch('/process', {
+        method: 'POST',
+    })
+        .then(response => {
+            console.log('Response received:', response); // Log the response
+            return response.json();
+        })
+        .then(data => {
+            console.log('Data received:', data); // Log the parsed JSON data
+            if (data.success) {
+                window.location.href = '/results';
+            } else {
+                setTimeout(checkStatus, 1000);
+            }
+        })
+        .catch(error => {
+            console.log('Error:', error); // Log any error that occurs
+        });
+}
+
+// Call checkStatus() when the page loads
+window.addEventListener('load', () => {
+    checkStatus();
+});
+</script>
+{% endblock %}
+{% block content %}
+<img src="../static/transcribing.gif" alt="computer gif">
+<p class="loading">Loading...</p>
+{% endblock content %}
