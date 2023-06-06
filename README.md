@@ -30,7 +30,7 @@ Contributions to this project are most welcome. Feel free to participate in any 
 
 ## License
 
-This project is published under the MIT license. For more information, please [click here](https://mit-license.org/).
+This project is published under the MIT license. For more information, please click [here](https://mit-license.org/).
 
 
 ーーーーーーー
