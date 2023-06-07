@@ -20,7 +20,7 @@ This application is a web application created using Flask, designed to convert a
 
 2. Run `pip install -r requirements.txt` to install the required packages.
 
-3. Create a config.py file using config_TEMPLATE.py as a reference, and set the username and password (this username and password will be used for accessing the app).You will need API keys for OpenAI. More information on how to get API keys can be found [here](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key).
+3. Create a config.py file using config_TEMPLATE.py as a reference, and set the username and password (this username and password will be used for accessing the app). You will need API keys for OpenAI. More information on how to get API keys can be found [here](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key).
 
 4. Create two blank folders named "uploads" and "results".
 
