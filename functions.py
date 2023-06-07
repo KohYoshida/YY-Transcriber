@@ -51,13 +51,13 @@ def transcribe(media, text, language):
         
     else:
         prompt_text = f"""
-    The audio file is in English. 
-    In many cases, the contents are press conferences and interviews that journalists have recorded. 
+    The audio file is in English. \n
+    In many cases, the contents are press conferences and interviews that journalists have recorded.\n
     Please transcribe it in accordance with the following rules:
     
-    Firstly, always include all punctuation, such as periods and commas, in the transcript. An example response might look like this: \"Hello, welcome to my lecture.\"
+    Firstly, always include all punctuation, such as periods and commas, in the transcript. An example response might look like this: \"Hello, welcome to my lecture.\"\n\n
     
-    Secondly, do not omit common filler words or interjections that appear in the audio. For instance, if the audio contains phrases like \"Umm, let me think like, hmm... Okay, here's what I'm, like, thinking.\", they should be included in the transcript.
+    Secondly, do not omit common filler words or interjections that appear in the audio. For instance, if the audio contains phrases like \"Umm, let me think like, hmm... Okay, here's what I'm, like, thinking.\", they should be included in the transcript.\n\n
     
     Lastly, ensure the transcription of this audio file is coherent with the following previous part: \n\n{text} 
     """

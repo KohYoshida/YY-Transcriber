@@ -33,15 +33,28 @@
 </div>
 
     <form id="file_form" action="/loading" method="post" enctype="multipart/form-data">
-        <div class="form-group-radio">
-            <p class="language-choice"><b>{{ _('音声データの言語：') }}</b></p>
-            <label>
-                <input type="radio" name="language" value="Japanese" checked> <b>{{ _('日本語') }}</b>
-            </label>
-            <label>
-                <input type="radio" name="language" value="English"> <b>{{ _('英語') }}</b>
-            </label>
-        </div>
+        {% if g.locale == 'ja' %}
+            <div class="form-group-radio">
+                <p class="language-choice"><b>{{ _('音声データの言語：') }}</b></p>
+                <label>
+                    <input type="radio" name="language" value="Japanese" checked> <b>{{ _('日本語') }}</b>
+                </label>
+                <label>
+                    <input type="radio" name="language" value="English"> <b>{{ _('英語') }}</b>
+                </label>
+            </div>
+        {% else %}
+            <div class="form-group-radio">
+                <p class="language-choice"><b>{{ _('音声データの言語：') }}</b></p>
+                <label>
+                    <input type="radio" name="language" value="English" checked> <b>{{ _('英語') }}</b>
+                </label>
+                <label>
+                    <input type="radio" name="language" value="Japanese"> <b>{{ _('日本語') }}</b>
+                </label>
+            </div>
+        {% endif %}
+
         <div class="form-group">
         <div class="upload">
             <input type="file" name="file_input" id="file_input" accept=".mp3, .MP3">

@@ -8,6 +8,7 @@ import git
 import tempfile
 import config
 from flask_babel import Babel, gettext
+from flask import g 
 
 
 # Initialize Flask app
@@ -63,6 +64,13 @@ def verify_password(username, password):
 @app.errorhandler(401)
 def unauthorized_handler(error):
     return 'Unauthorized access.', 401
+
+###FOR SWITCHING LANGUAGE###
+
+# creat g object for turning the order of audio language
+@app.before_request
+def before_request():
+    g.locale = get_locale()
 
 
 ###SETUP LOUTES###
