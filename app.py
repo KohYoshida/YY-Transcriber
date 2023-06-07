@@ -73,6 +73,7 @@ def before_request():
     g.locale = get_locale()
 
 
+
 ###SETUP LOUTES###
 
 # Home route, requires login
