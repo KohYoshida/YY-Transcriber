@@ -37,15 +37,15 @@ def transcribe(media, text, language):
     # prompt differs in language of uploaded file
     if language == "Japanese":
         prompt_text = f"""
-    The audio file is in Japanese. \n
-    In many cases, the contents are press conferences or interviews that journalists have recorded.\n 
-    Please transcribe it in accordance with the following rules:\n
+    このオーディオファイルの音声は日本語です。 \n
+    内容は、記者が録音した記者会見やインタビューです。\n 
+    下記のルールに従って、文字起こしをして下さい。:\n
     
-    Firstly, always include all punctuation, such as periods and commas, in the transcript. An example response might look like this: \"こんにちは。そうですね、わかりました。ありがとうございます。\"\n\n
+    まず、文字起こしには必ず句読点を入れて読みやすくして下さい。例えば次のような形です: \"こんにちは。そうですね、わかりました。ありがとうございます。\"\n\n
     
-    Secondly, do not omit common filler words or interjections that appear in the audio. For instance, if the audio contains phrases like \"うーん、まあえっと、そうですね、やはり、そうしましょう.\", they should be included in the transcript.\n\n
+    次に、相槌や思考中に呟く言葉なども含めて文字起こしをして下さい。例えば次のようになります: \"うーん、まあえっと、そうですね、やはり、そうしましょう.\"\n\n
     
-    Lastly, ensure the transcription of this audio file is coherent with the following previous part: \n\n{text} 
+    最後に、文字起こしは次のテキストに自然に続くようにして下さい。: \n\n{text} 
     """
         print(f"Prompt is {prompt_text}")
         
